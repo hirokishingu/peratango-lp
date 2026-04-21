@@ -1,0 +1,45 @@
+---
+const base = import.meta.env.BASE_URL;
+---
+
+<header>
+  <nav>
+    <a href={base} class="logo">PeraTango</a>
+    <div class="links">
+      <a href={`${base}/support`}>サポート</a>
+      <a href={`${base}/privacy`}>プライバシー</a>
+    </div>
+  </nav>
+</header>
+
+<style>
+  header {
+    padding: 1rem 2rem;
+    border-bottom: 1px solid var(--border);
+  }
+  nav {
+    max-width: 960px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .logo {
+    font-weight: 700;
+    font-size: 1.25rem;
+    text-decoration: none;
+    color: var(--fg);
+  }
+  .links {
+    display: flex;
+    gap: 1.5rem;
+  }
+  .links a {
+    text-decoration: none;
+    color: var(--muted);
+    font-size: 0.95rem;
+  }
+  .links a:hover {
+    color: var(--accent);
+  }
+</style>

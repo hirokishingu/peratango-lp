@@ -1,0 +1,95 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<BaseLayout title="サポート | PeraTango">
+  <Header />
+  <main class="page">
+    <div class="inner">
+      <h1>サポート</h1>
+
+      <section>
+        <h2>お問い合わせ</h2>
+        <p>
+          アプリに関するご質問・ご要望・不具合のご連絡は以下のメールアドレスまでお願いします。
+        </p>
+        <p>
+          <a href="mailto:hrk.bass.526@gmail.com">hrk.bass.526@gmail.com</a>
+        </p>
+      </section>
+
+      <section>
+        <h2>よくある質問</h2>
+
+        <details>
+          <summary>SRS とは何ですか?</summary>
+          <p>
+            Spaced Repetition System(間隔反復システム)の略で、忘却曲線に基づいて最適なタイミングで復習を行う学習方法です。本アプリでは SM-2 アルゴリズムをベースに単語ごとの復習間隔を自動調整します。
+          </p>
+        </details>
+
+        <details>
+          <summary>単語を「習得済み」にするには?</summary>
+          <p>
+            正解を続けて覚えやすさ係数(ease factor)が 2.5 以上、かつ 3 回以上正解すると「習得済み」と判定されます。
+          </p>
+        </details>
+
+        <details>
+          <summary>既に知っている単語はどうすればいい?</summary>
+          <p>
+            フラッシュカード裏面の「既に知ってる」ボタン、またはデッキ詳細でのスワイプ操作から、その単語を一気に習得済み相当の状態にできます。次の復習は 14 日後に設定されます。
+          </p>
+        </details>
+
+        <details>
+          <summary>データはどこに保存されますか?</summary>
+          <p>
+            すべての単語・学習記録は端末内(SwiftData)に保存され、外部には送信されません。iCloud 同期には現時点で対応していません。
+          </p>
+        </details>
+      </section>
+    </div>
+  </main>
+  <Footer />
+</BaseLayout>
+
+<style>
+  .page {
+    padding: 3rem 2rem;
+  }
+  .inner {
+    max-width: 720px;
+    margin: 0 auto;
+  }
+  h1 {
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+    margin: 0 0 2rem;
+  }
+  h2 {
+    font-size: 1.25rem;
+    margin: 2.5rem 0 1rem;
+  }
+  section p {
+    color: var(--muted);
+  }
+  details {
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1rem 1.25rem;
+    margin-bottom: 0.75rem;
+  }
+  details summary {
+    cursor: pointer;
+    font-weight: 600;
+  }
+  details p {
+    margin: 0.75rem 0 0;
+    color: var(--muted);
+  }
+  a {
+    color: var(--accent);
+  }
+</style>

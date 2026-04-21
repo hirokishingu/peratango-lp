@@ -1,0 +1,112 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+const updated = '2026-04-21';
+---
+
+<BaseLayout title="プライバシーポリシー | PeraTango">
+  <Header />
+  <main class="page">
+    <div class="inner">
+      <h1>プライバシーポリシー</h1>
+      <p class="updated">最終更新日: {updated}</p>
+
+      <section>
+        <h2>1. 事業者情報</h2>
+        <p>
+          本アプリ「PeraTango」は個人開発者により提供されています。お問い合わせは
+          <a href="mailto:hrk.bass.526@gmail.com">hrk.bass.526@gmail.com</a>
+          までご連絡ください。
+        </p>
+      </section>
+
+      <section>
+        <h2>2. 取得する情報</h2>
+        <p>本アプリは以下の情報を取得する場合があります。</p>
+        <ul>
+          <li>
+            <strong>App Store Connect の分析情報</strong>: Apple が提供する集計済みの利用状況データ(インストール数・クラッシュ数・端末種別など)。個人を特定できる形ではありません。
+          </li>
+        </ul>
+        <p>
+          ユーザーが作成した単語・デッキ・学習履歴などはすべて端末内に保存され、外部サーバーには送信されません。
+        </p>
+      </section>
+
+      <section>
+        <h2>3. 情報の利用目的</h2>
+        <ul>
+          <li>アプリの品質改善・不具合の修正</li>
+          <li>機能の利用状況の把握と改善の優先度決定</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>4. 第三者への提供</h2>
+        <p>
+          取得した情報を第三者に提供することはありません。Apple による分析情報の提供は Apple のプライバシーポリシーに準拠します。
+        </p>
+      </section>
+
+      <section>
+        <h2>5. Cookie / トラッキング</h2>
+        <p>
+          本アプリは広告トラッキングや第三者解析 SDK(Firebase 等)を使用していません。App Tracking Transparency(ATT)によるトラッキング許諾も求めません。
+        </p>
+      </section>
+
+      <section>
+        <h2>6. データの削除</h2>
+        <p>
+          アプリをアンインストールすると、端末内に保存されたすべての学習データが削除されます。
+        </p>
+      </section>
+
+      <section>
+        <h2>7. 改定について</h2>
+        <p>
+          本ポリシーは必要に応じて改定されることがあります。変更があった場合は本ページにて告知します。
+        </p>
+      </section>
+    </div>
+  </main>
+  <Footer />
+</BaseLayout>
+
+<style>
+  .page {
+    padding: 3rem 2rem;
+  }
+  .inner {
+    max-width: 720px;
+    margin: 0 auto;
+  }
+  h1 {
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+    margin: 0 0 0.5rem;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: 0.9rem;
+    margin: 0 0 2.5rem;
+  }
+  h2 {
+    font-size: 1.125rem;
+    margin: 2rem 0 0.75rem;
+  }
+  p,
+  li {
+    color: var(--muted);
+  }
+  strong {
+    color: var(--fg);
+  }
+  ul {
+    padding-left: 1.25rem;
+  }
+  a {
+    color: var(--accent);
+  }
+</style>
