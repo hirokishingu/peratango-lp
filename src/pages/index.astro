@@ -2,7 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Header from '../components/Header.astro';
 import Hero from '../components/Hero.astro';
-import Features from '../components/Features.astro';
+import FeatureSection from '../components/FeatureSection.astro';
 import Footer from '../components/Footer.astro';
 ---
 
@@ -10,7 +10,42 @@ import Footer from '../components/Footer.astro';
   <Header />
   <main>
     <Hero />
-    <Features />
+
+    <div id="features">
+      <FeatureSection
+        eyebrow="学習ロードマップ"
+        title="目的別に、どこまで進めばいいかが分かる"
+        description="TOEIC・大学受験・英検など、目的別のロードマップを用意。今どの段階にいて、次に何をすれば良いかがひと目で分かります。"
+        image="/screenshots/06_roadmap.png"
+        alt="学習ロードマップ画面"
+      />
+
+      <FeatureSection
+        eyebrow="豊富な学習モード"
+        title="フラッシュカード・AI クイズ・ながら学習"
+        description="科学的な間隔反復(SRS)で復習タイミングを最適化。AI が生成するクイズや音声読み上げにも対応し、隙間時間でもしっかり定着します。"
+        image="/screenshots/04_study_select.png"
+        alt="学習モード選択画面"
+        reverse
+      />
+
+      <FeatureSection
+        eyebrow="単語帳管理"
+        title="手持ちの単語帳を、そのままアプリに"
+        description="プリセット・CSV インポート・OCR・ペースト貼り付けまで、単語追加の手段が豊富。デッキごとに進捗と習得率を管理できます。"
+        image="/screenshots/02_decks.png"
+        alt="単語帳一覧画面"
+      />
+
+      <FeatureSection
+        eyebrow="進捗を見える化"
+        title="続けたくなるダッシュボード"
+        description="学習ストリーク、ヒートマップ、デッキ別の習得率。数字と色で学習が可視化され、毎日続ける後押しになります。"
+        image="/screenshots/05_stats.png"
+        alt="統計画面"
+        reverse
+      />
+    </div>
   </main>
   <Footer />
 </BaseLayout>
