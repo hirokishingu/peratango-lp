@@ -77,15 +77,16 @@ const softwareJsonLd = {
         note="※ AI クイズは Apple Intelligence 対応機種 (iPhone 15 Pro 以降) と iOS 18.1 以降が必要です。"
       />
 
-      {/* TODO: 07_pronunciation.webp を用意したら差し替え。暫定で学習モード画像を利用中 */}
       <FeatureSection
         eyebrow="発音練習 (オフライン対応)"
         title="口に出して、耳で覚える"
         description="オンデバイス音声認識で発音を採点。ネット不要・録音は端末外に出ません。✅/🟡/❌ の 3 段階判定と不正解時のリトライで、スペルだけでなく発音まで確かな知識にします。"
-        image="/screenshots/04_study_select.webp"
-        alt="発音練習画面"
-        motion="breathe"
-        tap="50,75"
+        imageBefore="/screenshots/07a_study_scrolled.webp"
+        altBefore="学習モード選択画面（発音練習ボタン）"
+        image="/screenshots/07b_pronunciation.webp"
+        alt="発音練習セッション画面"
+        motion="float"
+        tap="50,78"
       />
 
       <WidgetShowcase />
@@ -94,12 +95,12 @@ const softwareJsonLd = {
         eyebrow="単語帳管理"
         title="手持ちの単語帳を、そのままアプリに"
         description="プリセット・CSV インポート・OCR・ペースト貼り付けまで、単語追加の手段が豊富。デッキごとに進捗と習得率を管理できます。"
-        imageBefore="/screenshots/01_home.webp"
-        altBefore="ホーム画面"
-        image="/screenshots/02_decks.webp"
-        alt="単語帳一覧画面"
+        imageBefore="/screenshots/02_decks.webp"
+        altBefore="単語帳一覧"
+        image="/screenshots/08_ocr_or_csv.webp"
+        alt="単語リストから追加"
         motion="float"
-        tap="30,97"
+        tap="50,30"
       />
 
       {/* TODO: 08_share_extension.webp を用意したら差し替え。暫定でデッキ画像を利用中 */}
@@ -114,15 +115,16 @@ const softwareJsonLd = {
         tap="85,14"
       />
 
-      {/* TODO: 09_dex.webp を用意したら差し替え。暫定で統計画像を利用中 */}
       <FeatureSection
         eyebrow="コレクション要素"
         title="図鑑を埋める感覚で、語彙を広げる"
         description="覚えた単語は「未収録 → 銅 → 銀 → 金」と 4 段階にランクアップ。プリセット全単語の達成率が見えて、毎日の学習に目標が生まれます。学習中にランクが上がるとその場でお知らせ。"
-        image="/screenshots/05_stats.webp"
+        imageBefore="/screenshots/01_home.webp"
+        altBefore="ホーム画面（図鑑カード）"
+        image="/screenshots/09_dex.webp"
         alt="単語図鑑画面"
-        motion="breathe"
-        scrollHint={true}
+        motion="float"
+        tap="50,32"
       />
 
       <FeatureSection
