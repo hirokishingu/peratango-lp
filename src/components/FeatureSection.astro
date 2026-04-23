@@ -263,6 +263,11 @@ if (tap) {
   }
 
   /* --- Scene transition mode --- */
+  /* シーン遷移がある phone 自体は揺れない（画面内のクロスフェードに集中させる） */
+  .phone.scene {
+    animation: none !important;
+    transform: none !important;
+  }
   .scene .viewport {
     /* 2 枚の画像を重ねる */
   }
