@@ -160,14 +160,52 @@ const ogImage = new URL(`${base}${image}`.replace(/\/+/g, '/'), Astro.site);
           (entries) => {
             entries.forEach((entry) => {
               if (entry.isIntersecting) {
-                entry.target.classList.add('in-view');
-                io.unobserve(entry.target);
+                const el = entry.target;
+                const delay = el.getAttribute('data-reveal-delay');
+                if (delay) {
+                  el.style.transitionDelay = delay + 'ms';
+                }
+                el.classList.add('in-view');
+                io.unobserve(el);
               }
             });
           },
           { threshold: 0.15 }
         );
         document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
+
+        // Scroll-linked tilt for phone mockups
+        const phones = document.querySelectorAll('.mockup .phone[data-tilt], .phone.tiltable');
+        if (phones.length > 0) {
+          const tiltIo = new IntersectionObserver(
+            (entries) => {
+              entries.forEach((entry) => {
+                entry.target.dataset.inView = entry.isIntersecting ? '1' : '0';
+              });
+            },
+            { threshold: [0, 0.25, 0.5, 0.75, 1] }
+          );
+          phones.forEach((p) => tiltIo.observe(p));
+          let ticking = false;
+          const update = () => {
+            const vh = window.innerHeight;
+            phones.forEach((phone) => {
+              if (phone.dataset.inView !== '1') return;
+              const rect = phone.getBoundingClientRect();
+              const progress = Math.max(-1, Math.min(1, (rect.top + rect.height / 2 - vh / 2) / (vh / 2)));
+              const tilt = -progress * 6; // -6deg to +6deg based on scroll position
+              phone.style.setProperty('--tilt', tilt + 'deg');
+            });
+            ticking = false;
+          };
+          window.addEventListener('scroll', () => {
+            if (!ticking) {
+              requestAnimationFrame(update);
+              ticking = true;
+            }
+          }, { passive: true });
+          update();
+        }
       })();
     </script>
   </body>

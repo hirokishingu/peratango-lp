@@ -1,0 +1,114 @@
+---
+// 数字のカウントアップ付きの小さい統計ストリップ
+---
+
+<section class="strip">
+  <div class="inner">
+    <div class="stat reveal" data-reveal-delay="0">
+      <div class="num" data-count="2500" data-duration="1400">0</div>
+      <div class="label">プリセット単語</div>
+    </div>
+    <div class="divider" aria-hidden="true"></div>
+    <div class="stat reveal" data-reveal-delay="120">
+      <div class="num" data-count="9" data-duration="1000">0</div>
+      <div class="label">学習モード</div>
+    </div>
+    <div class="divider" aria-hidden="true"></div>
+    <div class="stat reveal" data-reveal-delay="240">
+      <div class="num">¥0</div>
+      <div class="label">完全無料</div>
+    </div>
+    <div class="divider" aria-hidden="true"></div>
+    <div class="stat reveal" data-reveal-delay="360">
+      <div class="num">✓</div>
+      <div class="label">オフライン対応</div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .strip {
+    padding: 2.5rem 2rem;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    background: color-mix(in srgb, var(--accent) 3%, transparent);
+  }
+  .inner {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr auto 1fr auto 1fr;
+    align-items: center;
+    gap: 1rem;
+  }
+  .stat {
+    text-align: center;
+  }
+  .num {
+    font-size: clamp(1.6rem, 3vw, 2.4rem);
+    font-weight: 800;
+    background: linear-gradient(135deg, #4f46e5, #7c3aed);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+  }
+  .label {
+    margin-top: 0.35rem;
+    font-size: 0.78rem;
+    color: var(--muted);
+    font-weight: 500;
+    letter-spacing: 0.05em;
+  }
+  .divider {
+    width: 1px;
+    height: 36px;
+    background: var(--border);
+  }
+  @media (max-width: 768px) {
+    .inner {
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem 1rem;
+    }
+    .divider {
+      display: none;
+    }
+  }
+</style>
+
+<script is:inline>
+  (() => {
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const nums = document.querySelectorAll('.num[data-count]');
+    if (reduced) {
+      nums.forEach((el) => {
+        const target = parseInt(el.getAttribute('data-count') || '0', 10);
+        el.textContent = target.toLocaleString() + '+';
+      });
+      return;
+    }
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          const el = entry.target;
+          const target = parseInt(el.getAttribute('data-count') || '0', 10);
+          const duration = parseInt(el.getAttribute('data-duration') || '1200', 10);
+          const startTime = performance.now();
+          const tick = (now) => {
+            const t = Math.min(1, (now - startTime) / duration);
+            const eased = 1 - Math.pow(1 - t, 3);
+            const value = Math.round(target * eased);
+            el.textContent = value.toLocaleString() + (t === 1 ? '+' : '');
+            if (t < 1) requestAnimationFrame(tick);
+          };
+          requestAnimationFrame(tick);
+          io.unobserve(el);
+        });
+      },
+      { threshold: 0.5 }
+    );
+    nums.forEach((el) => io.observe(el));
+  })();
+</script>

@@ -1,4 +1,6 @@
 ---
+import FloatingEmojis from './FloatingEmojis.astro';
+
 interface Props {
   appStoreUrl?: string;
 }
@@ -8,22 +10,23 @@ const base = import.meta.env.BASE_URL;
 ---
 
 <section class="hero">
+  <FloatingEmojis />
   <div class="inner">
     <div class="copy">
-      <span class="eyebrow reveal">SRS × AI × ウィジェット</span>
-      <h1 class="reveal">
+      <span class="eyebrow reveal" data-reveal-delay="0">SRS × AI × ウィジェット</span>
+      <h1 class="reveal" data-reveal-delay="80">
         <span class="accent">忘れる前に</span>、<br />
         ちょうどいい復習を。
       </h1>
-      <p class="reveal">
+      <p class="reveal" data-reveal-delay="160">
         フラッシュカード・AI クイズ・ロック画面ウィジェット。<br />
         科学的な間隔反復で、単語を確実に長期記憶へ。
       </p>
-      <div class="actions reveal">
+      <div class="actions reveal" data-reveal-delay="240">
         <a href={appStoreUrl} class="cta">App Store で入手</a>
         <a href="#features" class="ghost">機能を見る</a>
       </div>
-      <ul class="badges reveal">
+      <ul class="badges reveal" data-reveal-delay="320">
         <li><span class="check">✓</span>完全無料</li>
         <li><span class="check">✓</span>広告なし</li>
         <li><span class="check">✓</span>登録不要</li>

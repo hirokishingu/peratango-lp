@@ -3,6 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Header from '../components/Header.astro';
 import Hero from '../components/Hero.astro';
 import FeatureSection from '../components/FeatureSection.astro';
+import StatsStrip from '../components/StatsStrip.astro';
 import WidgetShowcase from '../components/WidgetShowcase.astro';
 import Faq from '../components/Faq.astro';
 import SupportNote from '../components/SupportNote.astro';
@@ -46,6 +47,8 @@ const softwareJsonLd = {
   <Header />
   <main id="main-content">
     <Hero />
+
+    <StatsStrip />
 
     <div id="features">
       <FeatureSection
