@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://hirokishingu.github.io/peratango-lp/sitemap-index.xml

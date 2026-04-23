@@ -3,12 +3,48 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Header from '../components/Header.astro';
 import Hero from '../components/Hero.astro';
 import FeatureSection from '../components/FeatureSection.astro';
+import WidgetShowcase from '../components/WidgetShowcase.astro';
+import Faq from '../components/Faq.astro';
+import SupportNote from '../components/SupportNote.astro';
 import Footer from '../components/Footer.astro';
+import { faqItems } from '../data/faq';
+
+const base = import.meta.env.BASE_URL;
+const origin = 'https://hirokishingu.github.io';
+const faqJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqItems.map((item) => ({
+    '@type': 'Question',
+    name: item.q,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: item.a,
+    },
+  })),
+};
+const softwareJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'MobileApplication',
+  name: 'PeraTango',
+  operatingSystem: 'iOS 17+',
+  applicationCategory: 'EducationalApplication',
+  description:
+    'SRS (間隔反復) とオンデバイス AI を組み合わせた、無料で広告なしの英単語学習 iOS アプリ。フラッシュカード・AI クイズ・発音練習・ホーム画面ウィジェット・Dynamic Island・Share Extension・単語図鑑に対応。',
+  inLanguage: 'ja',
+  url: `${origin}${base}`,
+  image: `${origin}${base}/og-image.png`,
+  offers: {
+    '@type': 'Offer',
+    price: '0',
+    priceCurrency: 'JPY',
+  },
+};
 ---
 
 <BaseLayout title="PeraTango - SRS で効率よく単語を覚える iOS アプリ">
   <Header />
-  <main>
+  <main id="main-content">
     <Hero />
 
     <div id="features">
@@ -16,7 +52,7 @@ import Footer from '../components/Footer.astro';
         eyebrow="学習ロードマップ"
         title="目的別に、どこまで進めばいいかが分かる"
         description="TOEIC・大学受験・英検など、目的別のロードマップを用意。今どの段階にいて、次に何をすれば良いかがひと目で分かります。"
-        image="/screenshots/06_roadmap.png"
+        image="/screenshots/06_roadmap.webp"
         alt="学習ロードマップ画面"
       />
 
@@ -24,28 +60,71 @@ import Footer from '../components/Footer.astro';
         eyebrow="豊富な学習モード"
         title="フラッシュカード・AI クイズ・ながら学習"
         description="科学的な間隔反復(SRS)で復習タイミングを最適化。AI が生成するクイズや音声読み上げにも対応し、隙間時間でもしっかり定着します。"
-        image="/screenshots/04_study_select.png"
+        image="/screenshots/04_study_select.webp"
         alt="学習モード選択画面"
         reverse
+        note="※ AI クイズは Apple Intelligence 対応機種 (iPhone 15 Pro 以降) と iOS 18.1 以降が必要です。"
       />
+
+      {/* TODO: 07_pronunciation.webp を用意したら差し替え。暫定で学習モード画像を利用中 */}
+      <FeatureSection
+        eyebrow="発音練習 (オフライン対応)"
+        title="口に出して、耳で覚える"
+        description="オンデバイス音声認識で発音を採点。ネット不要・録音は端末外に出ません。✅/🟡/❌ の 3 段階判定と不正解時のリトライで、スペルだけでなく発音まで確かな知識にします。"
+        image="/screenshots/04_study_select.webp"
+        alt="発音練習画面"
+      />
+
+      <WidgetShowcase />
 
       <FeatureSection
         eyebrow="単語帳管理"
         title="手持ちの単語帳を、そのままアプリに"
         description="プリセット・CSV インポート・OCR・ペースト貼り付けまで、単語追加の手段が豊富。デッキごとに進捗と習得率を管理できます。"
-        image="/screenshots/02_decks.png"
+        image="/screenshots/02_decks.webp"
         alt="単語帳一覧画面"
+      />
+
+      {/* TODO: 08_share_extension.webp を用意したら差し替え。暫定でデッキ画像を利用中 */}
+      <FeatureSection
+        eyebrow="ワンタップで追加"
+        title="他アプリから、気になった単語をそのまま"
+        description="Safari・メール・メモなど、どこで英語を読んでいても、単語を長押し → 共有ボタンから PeraTango に送れます。AI が意味と例文を補完し、次にアプリを開いたとき自動で反映されます。"
+        image="/screenshots/02_decks.webp"
+        alt="Share Extension 画面"
+        reverse
+      />
+
+      {/* TODO: 09_dex.webp を用意したら差し替え。暫定で統計画像を利用中 */}
+      <FeatureSection
+        eyebrow="コレクション要素"
+        title="図鑑を埋める感覚で、語彙を広げる"
+        description="覚えた単語は「未収録 → 銅 → 銀 → 金」と 4 段階にランクアップ。プリセット全単語の達成率が見えて、毎日の学習に目標が生まれます。学習中にランクが上がるとその場でお知らせ。"
+        image="/screenshots/05_stats.webp"
+        alt="単語図鑑画面"
       />
 
       <FeatureSection
         eyebrow="進捗を見える化"
         title="続けたくなるダッシュボード"
-        description="学習ストリーク、ヒートマップ、デッキ別の習得率。数字と色で学習が可視化され、毎日続ける後押しになります。"
-        image="/screenshots/05_stats.png"
+        description="学習ストリーク、ヒートマップ、デッキ別の習得率。数字と色で学習が可視化され、毎日続ける後押しになります。1 日休んでもストリークを守る「フリーズチケット」も。"
+        image="/screenshots/05_stats.webp"
         alt="統計画面"
         reverse
       />
     </div>
+    <Faq />
+    <SupportNote />
   </main>
   <Footer />
+  <script
+    is:inline
+    type="application/ld+json"
+    set:html={JSON.stringify(softwareJsonLd)}
+  />
+  <script
+    is:inline
+    type="application/ld+json"
+    set:html={JSON.stringify(faqJsonLd)}
+  />
 </BaseLayout>

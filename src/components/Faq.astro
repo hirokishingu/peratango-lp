@@ -1,0 +1,116 @@
+---
+import { faqItems as items } from '../data/faq';
+---
+
+<section id="faq" class="faq">
+  <div class="inner">
+    <div class="heading reveal">
+      <span class="eyebrow">よくある質問</span>
+      <h2>FAQ</h2>
+    </div>
+    <ul class="list">
+      {items.map((item) => (
+        <li class="reveal">
+          <details>
+            <summary>
+              <span class="q">{item.q}</span>
+              <span class="icon" aria-hidden="true">+</span>
+            </summary>
+            <p>{item.a}</p>
+          </details>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>
+
+<style>
+  .faq {
+    padding: 5rem 2rem;
+  }
+  .inner {
+    max-width: 760px;
+    margin: 0 auto;
+  }
+  .heading {
+    text-align: center;
+    margin-bottom: 2.5rem;
+  }
+  .eyebrow {
+    display: inline-block;
+    padding: 0.3rem 0.7rem;
+    background: color-mix(in srgb, var(--accent) 10%, transparent);
+    color: var(--accent);
+    border-radius: 999px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+  }
+  h2 {
+    font-size: clamp(1.6rem, 3.5vw, 2.25rem);
+    margin: 0;
+    letter-spacing: -0.01em;
+  }
+  .list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  details {
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    background: color-mix(in srgb, var(--accent) 3%, transparent);
+    overflow: hidden;
+    transition: border-color 0.2s ease, background 0.2s ease;
+  }
+  details[open] {
+    border-color: color-mix(in srgb, var(--accent) 35%, transparent);
+    background: color-mix(in srgb, var(--accent) 6%, transparent);
+  }
+  summary {
+    list-style: none;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.1rem 1.25rem;
+    font-weight: 600;
+    font-size: 1rem;
+  }
+  summary::-webkit-details-marker {
+    display: none;
+  }
+  .icon {
+    color: var(--accent);
+    font-size: 1.25rem;
+    font-weight: 400;
+    transition: transform 0.2s ease;
+    flex-shrink: 0;
+  }
+  details[open] .icon {
+    transform: rotate(45deg);
+  }
+  details p {
+    margin: 0;
+    padding: 0 1.25rem 1.25rem;
+    color: var(--muted);
+    line-height: 1.8;
+    font-size: 0.95rem;
+  }
+  @media (max-width: 768px) {
+    .faq {
+      padding: 3rem 1.25rem;
+    }
+    summary {
+      padding: 1rem;
+      font-size: 0.95rem;
+    }
+    details p {
+      padding: 0 1rem 1rem;
+    }
+  }
+</style>

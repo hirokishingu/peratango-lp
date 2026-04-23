@@ -1,0 +1,66 @@
+---
+// 開発者からのひと言
+---
+
+<section class="support">
+  <div class="inner reveal">
+    <span class="badge">From the developer</span>
+    <h2>完全無料で提供しています</h2>
+    <p>
+      広告もサブスクもありません。<br />
+      もし気に入っていただけたら、App Store での ★ レビューや
+      SNS でのシェアで応援していただけるととても嬉しいです。
+    </p>
+    <p class="heart">ありがとうございます 🙌</p>
+  </div>
+</section>
+
+<style>
+  .support {
+    padding: 4rem 2rem 2rem;
+  }
+  .inner {
+    max-width: 640px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 2.5rem 2rem;
+    border-radius: 24px;
+    background: color-mix(in srgb, var(--accent) 6%, transparent);
+    border: 1px solid color-mix(in srgb, var(--accent) 15%, transparent);
+  }
+  .badge {
+    display: inline-block;
+    padding: 0.3rem 0.7rem;
+    background: color-mix(in srgb, var(--accent) 12%, transparent);
+    color: var(--accent);
+    border-radius: 999px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    margin-bottom: 1rem;
+  }
+  h2 {
+    font-size: clamp(1.25rem, 2.5vw, 1.6rem);
+    margin: 0 0 1rem;
+    letter-spacing: -0.01em;
+  }
+  p {
+    color: var(--muted);
+    line-height: 1.9;
+    margin: 0;
+    font-size: 0.98rem;
+  }
+  .heart {
+    margin-top: 1rem;
+    font-weight: 600;
+    color: var(--fg);
+  }
+  @media (max-width: 768px) {
+    .support {
+      padding: 3rem 1.25rem 1rem;
+    }
+    .inner {
+      padding: 2rem 1.25rem;
+    }
+  }
+</style>

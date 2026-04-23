@@ -6,7 +6,7 @@ import Footer from '../components/Footer.astro';
 
 <BaseLayout title="サポート | PeraTango">
   <Header />
-  <main class="page">
+  <main id="main-content" class="page">
     <div class="inner">
       <h1>サポート</h1>
 
@@ -47,7 +47,7 @@ import Footer from '../components/Footer.astro';
         <details>
           <summary>データはどこに保存されますか?</summary>
           <p>
-            すべての単語・学習記録は端末内(SwiftData)に保存され、外部には送信されません。iCloud 同期には現時点で対応していません。
+            学習データ (単語・学習記録・設定) は端末内(SwiftData / UserDefaults)に保存されます。加えて、アプリ改善と学習傾向分析のため、ユーザーが追加した単語 (front/back) やデッキ名・利用状況・クラッシュ情報を Firebase Analytics / Crashlytics に送信します。匿名 ID と紐付いて保存され、氏名や広告 ID とは紐付けません。アプリ内の「設定 → 📊 アプリ改善への協力」から送信を停止できます。iCloud 同期には現時点で対応していません。
           </p>
         </details>
       </section>

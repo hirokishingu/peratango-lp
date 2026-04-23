@@ -10,27 +10,41 @@ const base = import.meta.env.BASE_URL;
 <section class="hero">
   <div class="inner">
     <div class="copy">
-      <span class="eyebrow">SRS × AI × ウィジェット</span>
-      <h1>
+      <span class="eyebrow reveal">SRS × AI × ウィジェット</span>
+      <h1 class="reveal">
         <span class="accent">忘れる前に</span>、<br />
         ちょうどいい復習を。
       </h1>
-      <p>
+      <p class="reveal">
         フラッシュカード・AI クイズ・ロック画面ウィジェット。<br />
         科学的な間隔反復で、単語を確実に長期記憶へ。
       </p>
-      <div class="actions">
+      <div class="actions reveal">
         <a href={appStoreUrl} class="cta">App Store で入手</a>
         <a href="#features" class="ghost">機能を見る</a>
       </div>
+      <ul class="badges reveal">
+        <li><span class="check">✓</span>完全無料</li>
+        <li><span class="check">✓</span>広告なし</li>
+        <li><span class="check">✓</span>登録不要</li>
+        <li><span class="check">✓</span>オフライン対応</li>
+      </ul>
     </div>
     <div class="mockup">
-      <div class="phone">
-        <img src={`${base}/screenshots/01_home.png`} alt="PeraTango ホーム画面" />
+      <div class="phone floating">
+        <img
+          src={`${base}/screenshots/01_home.webp`}
+          alt="PeraTango ホーム画面"
+          width="1179"
+          height="2556"
+          loading="eager"
+          decoding="async"
+        />
       </div>
     </div>
   </div>
-  <div class="glow"></div>
+  <div class="glow glow-a"></div>
+  <div class="glow glow-b"></div>
 </section>
 
 <style>
@@ -64,10 +78,23 @@ const base = import.meta.env.BASE_URL;
     letter-spacing: -0.02em;
   }
   .accent {
-    background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 50%, #ec4899 100%);
+    background: linear-gradient(
+      135deg,
+      #4f46e5 0%,
+      #7c3aed 25%,
+      #ec4899 50%,
+      #7c3aed 75%,
+      #4f46e5 100%
+    );
+    background-size: 200% 200%;
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
+    animation: gradientShift 8s ease-in-out infinite;
+  }
+  @keyframes gradientShift {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
   }
   .copy p {
     font-size: 1.1rem;
@@ -103,6 +130,34 @@ const base = import.meta.env.BASE_URL;
     border-radius: 999px;
     font-weight: 600;
   }
+  .badges {
+    list-style: none;
+    margin: 1.5rem 0 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem 1rem;
+  }
+  .badges li {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-size: 0.85rem;
+    color: var(--muted);
+    font-weight: 500;
+  }
+  .check {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: color-mix(in srgb, var(--accent) 15%, transparent);
+    color: var(--accent);
+    font-size: 0.7rem;
+    font-weight: 700;
+  }
   .mockup {
     display: flex;
     justify-content: center;
@@ -117,10 +172,21 @@ const base = import.meta.env.BASE_URL;
       0 50px 80px -30px rgba(79, 70, 229, 0.35),
       0 30px 50px -20px rgba(0, 0, 0, 0.4);
     transform: rotate(-3deg);
-    transition: transform 0.4s ease;
+    transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .phone.floating {
+    animation: float 7s ease-in-out infinite;
+  }
+  @keyframes float {
+    0%, 100% { transform: rotate(-3deg) translateY(0); }
+    50% { transform: rotate(-2deg) translateY(-10px); }
   }
   .phone:hover {
-    transform: rotate(0deg);
+    animation-play-state: paused;
+    transform: rotate(0deg) scale(1.02);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .phone.floating { animation: none; }
   }
   .phone img {
     width: 100%;
@@ -131,17 +197,30 @@ const base = import.meta.env.BASE_URL;
   }
   .glow {
     position: absolute;
-    top: -100px;
-    right: -200px;
     width: 600px;
     height: 600px;
-    background: radial-gradient(
-      circle,
-      rgba(124, 58, 237, 0.18),
-      transparent 60%
-    );
+    border-radius: 50%;
     pointer-events: none;
     z-index: -1;
+    filter: blur(20px);
+  }
+  .glow-a {
+    top: -100px;
+    right: -200px;
+    background: radial-gradient(circle, rgba(124, 58, 237, 0.22), transparent 60%);
+    animation: drift 14s ease-in-out infinite;
+  }
+  .glow-b {
+    bottom: -150px;
+    left: -200px;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(236, 72, 153, 0.14), transparent 60%);
+    animation: drift 18s ease-in-out infinite reverse;
+  }
+  @keyframes drift {
+    0%, 100% { transform: translate(0, 0); }
+    50% { transform: translate(40px, 30px); }
   }
   @media (max-width: 768px) {
     .hero {
@@ -153,6 +232,9 @@ const base = import.meta.env.BASE_URL;
       text-align: center;
     }
     .actions {
+      justify-content: center;
+    }
+    .badges {
       justify-content: center;
     }
     .phone {

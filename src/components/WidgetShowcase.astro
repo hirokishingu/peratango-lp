@@ -1,0 +1,317 @@
+---
+// Widget / Dynamic Island ショーケース（CSS モック、実装準拠）
+---
+
+<section class="showcase">
+  <div class="inner">
+    <div class="heading">
+      <span class="eyebrow">ホーム画面から、ロック画面から</span>
+      <h2>アプリを開かなくても、学習は続く</h2>
+      <p>
+        ウィジェット・Dynamic Island・ロック画面に今日の単語が現れる。<br />
+        思い出した瞬間、その場で回答して SRS が更新されます。
+      </p>
+    </div>
+
+    <div class="stage">
+      <!-- ===== Dynamic Island（展開表示・裏面） ===== -->
+      <figure class="card reveal">
+        <div class="label">Dynamic Island</div>
+        <div class="phone" aria-hidden="true">
+          <div class="screen di-screen">
+            <span class="sb-time">9:41</span>
+            <span class="sb-battery"></span>
+            <div class="island">
+              <div class="island-row">
+                <span class="emoji">📚</span>
+                <span class="counter dark">2 / 5</span>
+              </div>
+              <div class="word">
+                <span class="front dark">acquire</span>
+                <span class="back white">→  獲得する</span>
+              </div>
+              <div class="answers">
+                <span class="pill red">✗ 知らなかった</span>
+                <span class="pill green">✓ 知ってた</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <figcaption>他アプリ中でも展開して回答 → 即 SRS 更新。</figcaption>
+      </figure>
+
+      <!-- ===== ホーム画面ウィジェット（裏面） ===== -->
+      <figure class="card reveal">
+        <div class="label">ホーム画面ウィジェット</div>
+        <div class="phone" aria-hidden="true">
+          <div class="screen hs-screen">
+            <span class="sb-time dark-bg">9:41</span>
+            <span class="sb-battery dark-bg"></span>
+            <div class="widget">
+              <div class="w-head">
+                <span class="sess">📚 今日の復習</span>
+                <span class="counter muted">2 / 5</span>
+              </div>
+              <div class="word">
+                <span class="front muted">acquire</span>
+                <span class="back">→  獲得する</span>
+              </div>
+              <div class="answers">
+                <span class="pill red">✗ 知らなかった</span>
+                <span class="pill green">✓ 知ってた</span>
+              </div>
+            </div>
+            <div class="dock-hint">
+              <span class="dock-icon"></span>
+              <span class="dock-icon"></span>
+              <span class="dock-icon"></span>
+              <span class="dock-icon"></span>
+            </div>
+          </div>
+        </div>
+        <figcaption>タップ一つで回答、そのまま習熟度に反映。</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<style>
+  .showcase {
+    padding: 5rem 2rem;
+    background:
+      radial-gradient(circle at 10% 0%, color-mix(in srgb, var(--accent) 10%, transparent), transparent 50%),
+      radial-gradient(circle at 90% 100%, rgba(236, 72, 153, 0.08), transparent 50%);
+  }
+  .inner { max-width: 1100px; margin: 0 auto; }
+
+  .heading { text-align: center; margin-bottom: 3rem; }
+  .eyebrow {
+    display: inline-block;
+    padding: 0.3rem 0.7rem;
+    background: color-mix(in srgb, var(--accent) 10%, transparent);
+    color: var(--accent);
+    border-radius: 999px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+  }
+  h2 {
+    font-size: clamp(1.6rem, 3.5vw, 2.25rem);
+    margin: 0 0 1rem;
+    letter-spacing: -0.01em;
+  }
+  .heading p {
+    margin: 0 auto;
+    color: var(--muted);
+    max-width: 540px;
+    line-height: 1.8;
+  }
+
+  .stage {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem;
+    align-items: start;
+  }
+  .card { margin: 0; display: flex; flex-direction: column; align-items: center; }
+  .label {
+    font-size: 0.75rem;
+    color: var(--muted);
+    margin-bottom: 1rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  figcaption {
+    color: var(--muted);
+    font-size: 0.95rem;
+    margin-top: 1.25rem;
+    text-align: center;
+    max-width: 320px;
+  }
+
+  /* ---- Phone frame (shared) ---- */
+  .phone {
+    width: 320px;
+    height: 420px;
+    border-radius: 52px;
+    padding: 8px;
+    background: linear-gradient(160deg, #1f2937, #0f172a);
+    box-shadow: 0 30px 60px -25px rgba(79, 70, 229, 0.35);
+  }
+  .screen {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border-radius: 44px;
+    overflow: hidden;
+  }
+  .sb-time, .sb-battery {
+    position: absolute;
+    top: 14px;
+    color: #fff;
+    font-size: 13px;
+    font-weight: 600;
+    z-index: 2;
+  }
+  .sb-time { left: 22px; }
+  .sb-battery {
+    right: 22px;
+    top: 18px;
+    width: 24px;
+    height: 12px;
+    border-radius: 3px;
+    background: linear-gradient(90deg, #fff 70%, rgba(255,255,255,0.3) 70%);
+  }
+  .sb-time.dark-bg { color: #fff; mix-blend-mode: difference; }
+  .sb-battery.dark-bg { mix-blend-mode: difference; }
+
+  /* ---- Dynamic Island screen (dark wallpaper) ---- */
+  .di-screen {
+    background:
+      radial-gradient(circle at 30% 80%, rgba(124, 58, 237, 0.35), transparent 55%),
+      radial-gradient(circle at 80% 30%, rgba(236, 72, 153, 0.25), transparent 55%),
+      linear-gradient(180deg, #0b0b18, #1a1033 80%);
+  }
+  .island {
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #000;
+    border-radius: 28px;
+    padding: 10px 14px 12px;
+    width: 240px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    box-shadow:
+      inset 0 0 0 1px rgba(255,255,255,0.04),
+      0 10px 24px rgba(0,0,0,0.5);
+    animation: islandBreathe 5s ease-in-out infinite;
+  }
+  @keyframes islandBreathe {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(-1px); }
+  }
+  .island-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .emoji { font-size: 14px; }
+  .counter {
+    font-size: 11px;
+    font-weight: 700;
+  }
+  .counter.dark { color: #9ca3af; }
+  .counter.muted { color: #6b7280; }
+
+  /* ---- Shared word line ---- */
+  .word {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+    padding: 4px 0 6px;
+  }
+  .front {
+    font-size: 12px;
+    font-weight: 500;
+  }
+  .front.dark { color: #9ca3af; }
+  .front.muted { color: #6b7280; }
+  .back {
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    color: #111;
+  }
+  .back.white { color: #fff; }
+
+  /* ---- Answer pills ---- */
+  .answers {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+  }
+  .pill {
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 999px;
+    font-size: 11px;
+    font-weight: 700;
+    line-height: 1.2;
+    white-space: nowrap;
+  }
+  .pill.red { background: rgba(239, 68, 68, 0.18); color: #ef4444; }
+  .pill.green { background: rgba(34, 197, 94, 0.18); color: #16a34a; }
+
+  /* ---- Home screen ---- */
+  .hs-screen {
+    background:
+      radial-gradient(circle at 20% 20%, rgba(255,255,255,0.15), transparent 50%),
+      linear-gradient(160deg, #7c3aed, #4f46e5 55%, #0891b2);
+  }
+  .widget {
+    position: absolute;
+    top: 90px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 220px;
+    height: 160px;
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1px solid rgba(255,255,255,0.4);
+    border-radius: 22px;
+    padding: 12px 14px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 0 15px 30px -10px rgba(0,0,0,0.3);
+    animation: widgetFloat 7s ease-in-out infinite;
+  }
+  @keyframes widgetFloat {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(-3px); }
+  }
+  .w-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 10.5px;
+  }
+  .sess { color: #6b7280; font-weight: 500; }
+  .dock-hint {
+    position: absolute;
+    bottom: 14px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(255,255,255,0.2);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-radius: 24px;
+    padding: 8px 12px;
+    display: flex;
+    gap: 10px;
+  }
+  .dock-icon {
+    width: 28px;
+    height: 28px;
+    border-radius: 8px;
+    background: rgba(255,255,255,0.5);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .island, .widget { animation: none; }
+    .island { transform: translateX(-50%); }
+    .widget { transform: translateX(-50%); }
+  }
+
+  @media (max-width: 768px) {
+    .stage {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+  }
+</style>

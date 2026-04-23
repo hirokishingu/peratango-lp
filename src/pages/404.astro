@@ -1,0 +1,90 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+const base = import.meta.env.BASE_URL;
+---
+
+<BaseLayout title="ページが見つかりません | PeraTango">
+  <Header />
+  <main id="main-content" class="page">
+    <div class="inner">
+      <div class="code">404</div>
+      <h1>ページが見つかりません</h1>
+      <p>
+        お探しのページは削除されたか、URL が変更された可能性があります。<br />
+        トップページから目的のコンテンツをお探しください。
+      </p>
+      <div class="actions">
+        <a href={base} class="cta">トップへ戻る</a>
+        <a href={`${base}/support`} class="ghost">サポート</a>
+      </div>
+    </div>
+  </main>
+  <Footer />
+</BaseLayout>
+
+<style>
+  .page {
+    padding: 5rem 2rem 6rem;
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .inner {
+    max-width: 520px;
+    text-align: center;
+  }
+  .code {
+    font-size: clamp(4rem, 10vw, 6rem);
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: -0.04em;
+    background: linear-gradient(135deg, #4f46e5, #7c3aed 50%, #ec4899);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    margin-bottom: 1rem;
+  }
+  h1 {
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    margin: 0 0 1rem;
+    letter-spacing: -0.01em;
+  }
+  p {
+    color: var(--muted);
+    margin: 0 0 2rem;
+    line-height: 1.8;
+  }
+  .actions {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .cta {
+    display: inline-block;
+    padding: 0.8rem 1.5rem;
+    background: var(--accent);
+    color: #fff;
+    text-decoration: none;
+    border-radius: 999px;
+    font-weight: 600;
+    box-shadow: 0 10px 30px -10px color-mix(in srgb, var(--accent) 60%, transparent);
+    transition: transform 0.2s ease;
+  }
+  .cta:hover {
+    transform: translateY(-2px);
+  }
+  .ghost {
+    display: inline-block;
+    padding: 0.8rem 1.5rem;
+    border: 1px solid var(--border);
+    color: var(--fg);
+    text-decoration: none;
+    border-radius: 999px;
+    font-weight: 600;
+  }
+</style>

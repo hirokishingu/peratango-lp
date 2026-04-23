@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <style>
+      * { box-sizing: border-box; margin: 0; padding: 0; }
+      html, body {
+        width: 1200px;
+        height: 630px;
+        overflow: hidden;
+        font-family: -apple-system, BlinkMacSystemFont, 'Hiragino Sans', 'Yu Gothic', sans-serif;
+      }
+      body {
+        position: relative;
+        background:
+          radial-gradient(circle at 15% 20%, rgba(124, 58, 237, 0.55), transparent 55%),
+          radial-gradient(circle at 85% 80%, rgba(236, 72, 153, 0.4), transparent 55%),
+          linear-gradient(160deg, #0f172a 0%, #1e1b4b 55%, #0f172a 100%);
+        color: #fff;
+        padding: 72px 80px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+      .logo {
+        display: inline-flex;
+        align-items: center;
+        gap: 14px;
+        font-weight: 700;
+        font-size: 28px;
+        letter-spacing: -0.01em;
+      }
+      .logo-dot {
+        width: 36px;
+        height: 36px;
+        border-radius: 10px;
+        background: linear-gradient(135deg, #7c3aed, #ec4899);
+        box-shadow: 0 10px 30px -10px rgba(124, 58, 237, 0.8);
+      }
+      .eyebrow {
+        display: inline-block;
+        padding: 8px 16px;
+        background: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        border-radius: 999px;
+        font-size: 18px;
+        font-weight: 600;
+        color: rgba(255, 255, 255, 0.9);
+        margin-bottom: 28px;
+      }
+      h1 {
+        font-size: 84px;
+        line-height: 1.15;
+        letter-spacing: -0.02em;
+        font-weight: 800;
+        margin-bottom: 28px;
+      }
+      .accent {
+        background: linear-gradient(135deg, #a78bfa 0%, #f472b6 50%, #a78bfa 100%);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+      p.sub {
+        font-size: 26px;
+        color: rgba(255, 255, 255, 0.72);
+        line-height: 1.6;
+        max-width: 760px;
+      }
+      .badges {
+        display: flex;
+        gap: 14px;
+        flex-wrap: wrap;
+      }
+      .badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 10px 18px;
+        background: rgba(255, 255, 255, 0.08);
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        border-radius: 999px;
+        font-size: 18px;
+        font-weight: 600;
+        color: rgba(255, 255, 255, 0.92);
+      }
+      .check {
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #7c3aed, #ec4899);
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        color: #fff;
+        font-size: 12px;
+        font-weight: 800;
+      }
+      .footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+      }
+      .tag {
+        font-size: 20px;
+        color: rgba(255, 255, 255, 0.5);
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+        font-weight: 600;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <div class="logo">
+        <span class="logo-dot"></span>
+        <span>PeraTango</span>
+      </div>
+    </div>
+
+    <div>
+      <span class="eyebrow">SRS × AI × ウィジェット</span>
+      <h1>
+        <span class="accent">忘れる前に</span>、<br />
+        ちょうどいい復習を。
+      </h1>
+      <p class="sub">
+        フラッシュカード・AI クイズ・ロック画面ウィジェット。<br />
+        科学的な間隔反復で、単語を確実に長期記憶へ。
+      </p>
+    </div>
+
+    <div class="footer">
+      <div class="badges">
+        <span class="badge"><span class="check">✓</span>完全無料</span>
+        <span class="badge"><span class="check">✓</span>広告なし</span>
+        <span class="badge"><span class="check">✓</span>登録不要</span>
+        <span class="badge"><span class="check">✓</span>オフライン対応</span>
+      </div>
+      <div class="tag">iOS App</div>
+    </div>
+  </body>
+</html>
