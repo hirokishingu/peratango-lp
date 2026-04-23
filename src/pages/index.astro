@@ -57,6 +57,8 @@ const softwareJsonLd = {
         description="TOEIC・大学受験・英検など、目的別のロードマップを用意。今どの段階にいて、次に何をすれば良いかがひと目で分かります。"
         image="/screenshots/06_roadmap.webp"
         alt="学習ロードマップ画面"
+        motion="slide"
+        scrollHint={true}
       />
 
       <FeatureSection
@@ -66,6 +68,8 @@ const softwareJsonLd = {
         image="/screenshots/04_study_select.webp"
         alt="学習モード選択画面"
         reverse
+        motion="float"
+        tap="50,48"
         note="※ AI クイズは Apple Intelligence 対応機種 (iPhone 15 Pro 以降) と iOS 18.1 以降が必要です。"
       />
 
@@ -76,6 +80,8 @@ const softwareJsonLd = {
         description="オンデバイス音声認識で発音を採点。ネット不要・録音は端末外に出ません。✅/🟡/❌ の 3 段階判定と不正解時のリトライで、スペルだけでなく発音まで確かな知識にします。"
         image="/screenshots/04_study_select.webp"
         alt="発音練習画面"
+        motion="breathe"
+        tap="50,75"
       />
 
       <WidgetShowcase />
@@ -86,6 +92,8 @@ const softwareJsonLd = {
         description="プリセット・CSV インポート・OCR・ペースト貼り付けまで、単語追加の手段が豊富。デッキごとに進捗と習得率を管理できます。"
         image="/screenshots/02_decks.webp"
         alt="単語帳一覧画面"
+        motion="tilt"
+        scrollHint={true}
       />
 
       {/* TODO: 08_share_extension.webp を用意したら差し替え。暫定でデッキ画像を利用中 */}
@@ -96,6 +104,8 @@ const softwareJsonLd = {
         image="/screenshots/02_decks.webp"
         alt="Share Extension 画面"
         reverse
+        motion="slide"
+        tap="85,14"
       />
 
       {/* TODO: 09_dex.webp を用意したら差し替え。暫定で統計画像を利用中 */}
@@ -105,6 +115,8 @@ const softwareJsonLd = {
         description="覚えた単語は「未収録 → 銅 → 銀 → 金」と 4 段階にランクアップ。プリセット全単語の達成率が見えて、毎日の学習に目標が生まれます。学習中にランクが上がるとその場でお知らせ。"
         image="/screenshots/05_stats.webp"
         alt="単語図鑑画面"
+        motion="breathe"
+        scrollHint={true}
       />
 
       <FeatureSection
@@ -114,6 +126,8 @@ const softwareJsonLd = {
         image="/screenshots/05_stats.webp"
         alt="統計画面"
         reverse
+        motion="parallax"
+        tap="75,20"
       />
     </div>
     <Faq />

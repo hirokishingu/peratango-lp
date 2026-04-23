@@ -174,10 +174,12 @@ const ogImage = new URL(`${base}${image}`.replace(/\/+/g, '/'), Astro.site);
         );
         document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
 
-        // Scroll-linked tilt for phone mockups
-        const phones = document.querySelectorAll('.mockup .phone[data-tilt], .phone.tiltable');
-        if (phones.length > 0) {
-          const tiltIo = new IntersectionObserver(
+        // Scroll-linked transforms for phone mockups (tilt / parallax)
+        const scrollPhones = document.querySelectorAll(
+          '.phone[data-motion="tilt"], .phone[data-motion="parallax"]'
+        );
+        if (scrollPhones.length > 0) {
+          const scrollIo = new IntersectionObserver(
             (entries) => {
               entries.forEach((entry) => {
                 entry.target.dataset.inView = entry.isIntersecting ? '1' : '0';
@@ -185,16 +187,20 @@ const ogImage = new URL(`${base}${image}`.replace(/\/+/g, '/'), Astro.site);
             },
             { threshold: [0, 0.25, 0.5, 0.75, 1] }
           );
-          phones.forEach((p) => tiltIo.observe(p));
+          scrollPhones.forEach((p) => scrollIo.observe(p));
           let ticking = false;
           const update = () => {
             const vh = window.innerHeight;
-            phones.forEach((phone) => {
+            scrollPhones.forEach((phone) => {
               if (phone.dataset.inView !== '1') return;
               const rect = phone.getBoundingClientRect();
               const progress = Math.max(-1, Math.min(1, (rect.top + rect.height / 2 - vh / 2) / (vh / 2)));
-              const tilt = -progress * 6; // -6deg to +6deg based on scroll position
-              phone.style.setProperty('--tilt', tilt + 'deg');
+              const motion = phone.dataset.motion;
+              if (motion === 'tilt') {
+                phone.style.setProperty('--tilt', (-progress * 6) + 'deg');
+              } else if (motion === 'parallax') {
+                phone.style.setProperty('--translate-y', (-progress * 30) + 'px');
+              }
             });
             ticking = false;
           };
