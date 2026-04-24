@@ -74,6 +74,10 @@ const ogImage = new URL(`${base}${image}`.replace(/\/+/g, '/'), Astro.site);
       }
       html {
         scroll-behavior: smooth;
+        /* iOS Safari のスクロール位置インジケータを確実に表示する */
+        overflow-y: scroll;
+        scrollbar-gutter: stable;
+        -webkit-overflow-scrolling: touch;
       }
       body {
         margin: 0;
