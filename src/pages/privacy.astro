@@ -3,7 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 
-const updated = '2026-04-22';
+const updated = '2026-04-24';
 ---
 
 <BaseLayout title="プライバシーポリシー | PeraTango">
@@ -45,7 +45,34 @@ const updated = '2026-04-22';
       </section>
 
       <section>
-        <h2>3. 情報の利用目的</h2>
+        <h2>3. 端末内のみで処理され、外部送信しない情報</h2>
+        <p>
+          以下の機能はすべて端末内で処理され、音声データ・共有テキスト・AI 入力内容などが外部サーバーに送信されることはありません。
+        </p>
+        <ul>
+          <li>
+            <strong>発音採点時のマイク音声・音声認識結果</strong>: iOS の <code>SFSpeechRecognizer</code> をオンデバイスモード (<code>requiresOnDeviceRecognition = true</code>) で使用します。音声データはクラウドに送信されず、ファイルとして保存もされません。認識結果 (テキスト) は採点処理に使われた後、破棄されます。
+          </li>
+          <li>
+            <strong>Share Extension で共有されたテキスト</strong>: Safari・メール・メモ等の他アプリから共有されたテキストは、端末内の App Group (共有領域) を経由してアプリ本体に受け渡されます。外部サーバーには送信されません。
+          </li>
+          <li>
+            <strong>AI 機能 (Apple Intelligence / Foundation Models)</strong>: AI クイズ生成・単語の意味/例文補完などの AI 処理は、Apple の Foundation Models による端末内推論で完結します。入力内容がクラウドに送信されることはありません (Apple Intelligence の利用には対応機種と iOS 18.1 以降が必要です)。
+          </li>
+          <li>
+            <strong>OCR (カメラ / 写真ライブラリ)</strong>: 単語追加時の文字認識は iOS の Vision フレームワークにより端末内で処理します。撮影画像や写真ライブラリの内容が外部送信されることはありません。
+          </li>
+          <li>
+            <strong>学習リマインダー通知</strong>: 復習通知は iOS のローカル通知としてスケジュールされ、リモート通知 (プッシュ通知) は使用していません。通知のためにサーバーと通信することはありません。
+          </li>
+        </ul>
+        <p>
+          これらの機能を利用するにあたり、iOS の仕様に従って初回のみマイク・音声認識・カメラ・写真・通知の利用許可を求めます。許可しない場合は該当機能が利用できませんが、アプリ全体の動作には影響しません。
+        </p>
+      </section>
+
+      <section>
+        <h2>4. 情報の利用目的</h2>
         <ul>
           <li>アプリの品質改善・不具合の修正</li>
           <li>機能の利用状況の把握と改善の優先度決定</li>
@@ -58,7 +85,7 @@ const updated = '2026-04-22';
       </section>
 
       <section>
-        <h2>4. 第三者への提供 / 委託先</h2>
+        <h2>5. 第三者への提供 / 委託先</h2>
         <p>
           取得した情報を広告や販売目的で第三者に提供することはありません。利用状況・診断情報の取り扱いは以下の委託先に準じます。
         </p>
@@ -76,14 +103,14 @@ const updated = '2026-04-22';
       </section>
 
       <section>
-        <h2>5. Cookie / トラッキング</h2>
+        <h2>6. Cookie / トラッキング</h2>
         <p>
           本アプリは広告 SDK や広告 ID (IDFA) を使用しておらず、App Tracking Transparency (ATT) によるトラッキング許諾も求めません。Firebase Analytics は広告 ID を収集せず、他社アプリや Web サイト横断のトラッキング目的には使用していません。
         </p>
       </section>
 
       <section>
-        <h2>6. オプトアウト</h2>
+        <h2>7. オプトアウト</h2>
         <p>
           アプリ内の「設定 → 📊 アプリ改善への協力 → 利用状況の送信」トグルを OFF にすることで、Firebase Analytics への送信 (単語内容・デッキ名を含むすべてのイベント) を停止できます。OFF 以降は新たなデータが送信されません。
         </p>
@@ -93,7 +120,7 @@ const updated = '2026-04-22';
       </section>
 
       <section>
-        <h2>7. データの削除</h2>
+        <h2>8. データの削除</h2>
         <p>
           アプリをアンインストールすると、端末内に保存されたすべての学習データ (単語・デッキ・学習履歴・設定) が削除されます。
         </p>
@@ -103,7 +130,7 @@ const updated = '2026-04-22';
       </section>
 
       <section>
-        <h2>8. 改定について</h2>
+        <h2>9. 改定について</h2>
         <p>
           本ポリシーは必要に応じて改定されることがあります。変更があった場合は本ページにて告知します。
         </p>
