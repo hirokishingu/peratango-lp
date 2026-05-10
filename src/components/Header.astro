@@ -1,4 +1,6 @@
 ---
+import { appStoreUrl } from '../data/appStore';
+
 const base = import.meta.env.BASE_URL;
 ---
 
@@ -9,7 +11,9 @@ const base = import.meta.env.BASE_URL;
       <a href={`${base}#features`}>機能</a>
       <a href={`${base}#faq`}>FAQ</a>
       <a href={`${base}/support`}>サポート</a>
-      <a href={`${base}/privacy`}>プライバシー</a>
+      <a href={appStoreUrl} target="_blank" rel="noopener" class="cta">
+        App Store
+      </a>
     </div>
   </nav>
 </header>
@@ -47,6 +51,18 @@ const base = import.meta.env.BASE_URL;
   }
   .links a:hover {
     color: var(--accent);
+  }
+  .links a.cta {
+    background: var(--accent);
+    color: #fff;
+    padding: 0.4rem 0.95rem;
+    border-radius: 999px;
+    font-weight: 600;
+    font-size: 0.85rem;
+  }
+  .links a.cta:hover {
+    color: #fff;
+    opacity: 0.9;
   }
 
   @media (max-width: 640px) {

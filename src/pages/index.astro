@@ -9,6 +9,7 @@ import Faq from '../components/Faq.astro';
 import SupportNote from '../components/SupportNote.astro';
 import Footer from '../components/Footer.astro';
 import { faqItems } from '../data/faq';
+import { appStoreUrl } from '../data/appStore';
 
 const base = import.meta.env.BASE_URL;
 const origin = 'https://hirokishingu.github.io';
@@ -40,13 +41,14 @@ const softwareJsonLd = {
     price: '0',
     priceCurrency: 'JPY',
   },
+  installUrl: appStoreUrl,
 };
 ---
 
 <BaseLayout title="PeraTango - SRS で効率よく単語を覚える iOS アプリ">
   <Header />
   <main id="main-content">
-    <Hero />
+    <Hero appStoreUrl={appStoreUrl} />
 
     <StatsStrip />
 
