@@ -32,7 +32,7 @@ const softwareJsonLd = {
   operatingSystem: 'iOS 17+',
   applicationCategory: 'EducationalApplication',
   description:
-    'SRS (間隔反復) とオンデバイス AI を組み合わせた、無料で広告なしの英単語学習 iOS アプリ。フラッシュカード・AI クイズ・発音練習・ホーム画面ウィジェット・Dynamic Island・Share Extension・単語図鑑に対応。',
+    'SRS (間隔反復) とオンデバイス AI を組み合わせた、無料で広告なしの英単語学習 iOS アプリ。フラッシュカード・四択・タイピング・穴埋め・AI クイズ・発音練習に加え、覚え方ヒント・ホーム画面ウィジェット・Dynamic Island・Share Extension・単語図鑑に対応。',
   inLanguage: 'ja',
   url: `${origin}${base}`,
   image: `${origin}${base}/og-image.png`,
@@ -66,17 +66,55 @@ const softwareJsonLd = {
       />
 
       <FeatureSection
-        eyebrow="豊富な学習モード"
-        title="フラッシュカード・AI クイズ・ながら学習"
-        description="科学的な間隔反復(SRS)で復習タイミングを最適化。AI が生成するクイズや音声読み上げにも対応し、隙間時間でもしっかり定着します。"
+        eyebrow="6 つの学習モード"
+        title="フラッシュ・四択・タイピング・穴埋め・AI クイズ・発音"
+        description="科学的な間隔反復 (SRS) で復習タイミングを最適化。①フラッシュで知らない単語を仕分け、②間違えた単語を自分に合うモード (四択 / タイピング / 穴埋め) で定着、③ AI クイズや発音でさらに深く ── 同じ単語を多角的に学べます。"
         imageBefore="/screenshots/01_home.webp"
         altBefore="ホーム画面"
-        image="/screenshots/04_study_select.webp"
+        image="/screenshots/22_study_select_new_layout.webp"
         alt="学習モード選択画面"
         reverse
         motion="float"
         tap="50,97"
         note="※ AI クイズは Apple Intelligence 対応機種 (iPhone 15 Pro 以降) と iOS 26 以降が必要です。"
+      />
+
+      <FeatureSection
+        eyebrow="覚え方ヒント (1,591 語に内蔵)"
+        title="間違えた瞬間に「あ、そう覚えるのか!」"
+        description="不正解になった単語に、語源や既知単語との関連で「覚え方」がぱっと出てきます。「arrive は river と同じ家族で『川岸にたどり着く』」「supervisor は super-(上から)+vise(見る)」のように、見た瞬間に納得できる解説で記憶を強化。全モードで動作し、ネット接続不要です。"
+        image="/screenshots/18_flashcard_with_hint.webp"
+        alt="フラッシュカード裏面の覚え方ヒント"
+        motion="float"
+      />
+
+      <FeatureSection
+        eyebrow="四択 — 識別力チェック"
+        title="サクッと意味を絞り込む"
+        description="日本語の意味を見て、4 つの英単語から正解を選ぶモード。同じデッキ内のダミーから出題するので、似た単語の区別力が鍛えられます。1 問 5 秒、スキマ時間にぴったり。"
+        image="/screenshots/19_multiple_choice.webp"
+        alt="四択モード画面"
+        reverse
+        motion="float"
+      />
+
+      <FeatureSection
+        eyebrow="タイピング — 能動的想起"
+        title="意味を書く、で記憶が深まる"
+        description="英単語を見て日本語の意味を入力するモード。受動的に「めくって確認」よりも記憶が深まり、似た単語との混同もしっかり区別できます。「、」区切りの主要訳どれかと一致すれば正解、緩めの照合で詰まりにくい設計です。"
+        image="/screenshots/20_typing.webp"
+        alt="タイピングモード画面"
+        motion="float"
+      />
+
+      <FeatureSection
+        eyebrow="穴埋め — 文脈で覚える"
+        title="例文の空欄を、自分で埋める"
+        description="例文の対象単語を空欄にして、その単語を入力するモード。スペルと用法を同時に習得でき、文脈の中で意味と単語が結びつきます。動詞の活用形 (-s, -ed, -ing) も柔軟に受け付けます。"
+        image="/screenshots/21_cloze.webp"
+        alt="穴埋めモード画面"
+        reverse
+        motion="float"
       />
 
       <FeatureSection
