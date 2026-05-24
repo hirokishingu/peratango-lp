@@ -35,14 +35,16 @@ const base = import.meta.env.BASE_URL;
     </div>
     <div class="mockup">
       <div class="phone floating">
-        <img
-          src={`${base}/screenshots/01_home.webp`}
-          alt="PeraTango ホーム画面"
-          width="1179"
-          height="2556"
-          loading="eager"
-          decoding="async"
-        />
+        <video
+          src={`${base}/videos/promo.mp4`}
+          poster={`${base}/screenshots/01_home.webp`}
+          autoplay
+          muted
+          loop
+          playsinline
+          preload="metadata"
+          aria-label="PeraTango 紹介動画"
+        ></video>
       </div>
     </div>
   </div>
@@ -191,7 +193,8 @@ const base = import.meta.env.BASE_URL;
   @media (prefers-reduced-motion: reduce) {
     .phone.floating { animation: none; }
   }
-  .phone img {
+  .phone img,
+  .phone video {
     width: 100%;
     height: 100%;
     object-fit: cover;
