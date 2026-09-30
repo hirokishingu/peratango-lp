@@ -1,0 +1,163 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+const base = import.meta.env.BASE_URL;
+const updated = '2026-09-30';
+const csvPath = `${base}/wordlists/peratango-wordlists.csv`.replace(/\/+/g, '/');
+
+// アプリ 1.5.0 の単語リスト (public/wordlists/peratango-wordlists.csv と同じ中身)
+const lists = [
+  { id: 'juniorHighSchool', name: '高校入試', count: 300 },
+  { id: 'uniCenter', name: '共通テスト', count: 400 },
+  { id: 'uniStandard', name: '大学入試 標準', count: 500 },
+  { id: 'uniAdvanced', name: '大学入試 難関', count: 500 },
+  { id: 'eiken2', name: '英検2級', count: 180 },
+  { id: 'eikenPre1', name: '英検準1級', count: 200 },
+  { id: 'toeic', name: 'TOEIC頻出', count: 300 },
+];
+---
+
+<BaseLayout
+  title="単語リストの見出し語 | PeraTango"
+  description="PeraTango の単語リストの見出し語と並び順の一覧 (CC BY-SA 4.0)"
+>
+  <Header />
+  <main id="main-content" class="page">
+    <div class="inner">
+      <h1>単語リストの見出し語の一覧</h1>
+      <p class="updated">最終更新日: {updated}</p>
+
+      <section>
+        <p>
+          PeraTango 1.5.0 で作り直した 7 つの単語リストの、見出し語とリストの中の順番です。アプリの意味・例文・訳・語源は含みません。
+        </p>
+        <table>
+          <thead>
+            <tr><th>単語リスト</th><th>list_id</th><th class="num">語数</th></tr>
+          </thead>
+          <tbody>
+            {lists.map((l) => (
+              <tr><td>{l.name}</td><td><code>{l.id}</code></td><td class="num">{l.count}</td></tr>
+            ))}
+          </tbody>
+        </table>
+        <p class="download">
+          <a href={csvPath} download>peratango-wordlists.csv をダウンロード</a>
+          (UTF-8。列は list_id・list_name・order・headword)
+        </p>
+      </section>
+
+      <section>
+        <h2>条件</h2>
+        <p>
+          この一覧は
+          <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.ja" target="_blank" rel="noopener">クリエイティブ・コモンズ 表示 - 継承 4.0 国際 (CC BY-SA 4.0)</a>
+          で公開しています。
+        </p>
+        <ul>
+          <li>この一覧には、アプリの利用規約 (App Store の利用条件を含む) の制限は及びません。</li>
+          <li>現状のまま提供し、正確さなどは保証しません。</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>作り方と出典</h2>
+        <p>
+          次のリストのレベルと頻度の順位を使って語を選び、並べました (変更: 選んだこと、並べたこと、除いた語があること)。
+        </p>
+        <ul>
+          <li>
+            <strong>New General Service List 1.2</strong> — Browne, C., Culligan, B. (2013). The New General Service List. Retrieved from
+            <a href="https://www.newgeneralservicelist.com" target="_blank" rel="noopener">https://www.newgeneralservicelist.com</a>.
+            New General Service List by Browne, C., Culligan, B., and Phillips, J. is licensed under CC BY-SA 4.0.
+          </li>
+          <li>
+            <strong>TOEIC Service List 1.2</strong> — Browne, C., Culligan, B. (2013). The TOEIC Service List. Retrieved from
+            <a href="https://www.newgeneralservicelist.com" target="_blank" rel="noopener">https://www.newgeneralservicelist.com</a>.
+            TOEIC Service List by Browne, C. and Culligan, B. is licensed under CC BY-SA 4.0.
+          </li>
+          <li>
+            <strong>Octanove Vocabulary Profile C1/C2 1.0</strong> — Octanove Labs. CC BY-SA 4.0.
+            <a href="https://github.com/openlanguageprofiles/olp-en-cefrj" target="_blank" rel="noopener">https://github.com/openlanguageprofiles/olp-en-cefrj</a>
+          </li>
+          <li>
+            <strong>wordfreq 3.1</strong> — Robyn Speer. Data licensed under CC BY-SA 4.0. Includes data from SUBTLEX (Marc Brysbaert et al.; SUBTLEX is freely available data), OpenSubtitles, Wikipedia, the Leeds Internet Corpus, ParaCrawl and Google Books Ngrams.
+            <a href="https://github.com/rspeer/wordfreq" target="_blank" rel="noopener">https://github.com/rspeer/wordfreq</a>
+          </li>
+          <li>
+            <strong>The CEFR-J Wordlist Version 1.5</strong> — Compiled by Yukio Tono, Tokyo University of Foreign Studies.
+            A1〜B2 のレベルに使いました。条件が CC BY-SA ではないため、レベルの値はこの一覧に含めていません。
+          </li>
+        </ul>
+        <p>
+          TOEIC は ETS の登録商標です。このページとアプリは ETS の検定を受けたり、承認されたりしたものではありません。英検は公益財団法人 日本英語検定協会の登録商標です。このページとアプリは同協会の承認や推奨を受けたものではありません。
+        </p>
+      </section>
+
+      <section lang="en">
+        <h2>English summary</h2>
+        <p>
+          Headwords and their order in seven PeraTango word lists (version 1.5.0), selected and ordered using the lists above.
+          Licensed under CC BY-SA 4.0 and provided as is, without warranties. The app's terms of use (including the App Store terms) do not restrict this dataset.
+          Meanings, examples and translations in the app are not part of this dataset.
+        </p>
+      </section>
+    </div>
+  </main>
+  <Footer />
+</BaseLayout>
+
+<style>
+  .page {
+    padding: 3rem 2rem;
+  }
+  .inner {
+    max-width: 720px;
+    margin: 0 auto;
+  }
+  h1 {
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+    margin: 0 0 0.5rem;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: 0.9rem;
+    margin: 0 0 2.5rem;
+  }
+  h2 {
+    font-size: 1.125rem;
+    margin: 2rem 0 0.75rem;
+  }
+  p,
+  li {
+    color: var(--muted);
+  }
+  strong {
+    color: var(--fg);
+  }
+  ul {
+    padding-left: 1.25rem;
+  }
+  a {
+    color: var(--accent);
+  }
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 1rem 0;
+  }
+  th,
+  td {
+    border-bottom: 1px solid var(--border);
+    padding: 0.5rem 0.25rem;
+    text-align: left;
+  }
+  .num {
+    text-align: right;
+  }
+  .download a {
+    font-weight: 600;
+  }
+</style>
