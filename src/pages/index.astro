@@ -32,7 +32,7 @@ const softwareJsonLd = {
   operatingSystem: 'iOS 17+',
   applicationCategory: 'EducationalApplication',
   description:
-    'SRS (間隔反復) とオンデバイス AI を組み合わせた、無料で広告なしの英単語学習 iOS アプリ。フラッシュカード・四択・タイピング・穴埋め・AI クイズ・発音練習に加え、覚え方ヒント・ホーム画面ウィジェット・Dynamic Island・Share Extension・単語図鑑に対応。',
+    'SRS (間隔反復) と語源を組み合わせた、無料で広告なしの英単語学習 iOS アプリ。約 2,600 語の語源、フラッシュカード・赤シート・四択・タイピング・穴埋め・聞き流し・語源で学ぶ・AI クイズ・発音練習の 9 モード、マッチングとタイムアタックのゲーム、試験日までのカウントダウン、ウィジェット・単語図鑑に対応。',
   inLanguage: 'ja',
   url: `${origin}${base}`,
   image: `${origin}${base}/og-image.png`,
@@ -54,10 +54,50 @@ const softwareJsonLd = {
 
     <div id="features">
       <FeatureSection
+        eyebrow="NEW 語源で覚える (約 2,600 語)"
+        title="部品に分けると、意味が見えてくる"
+        description="acquire = ac-（〜へ）＋ quire（求める）→「求めて自分のものにする → 獲得する」。約 2,600 語を部品に分け、部品を押すと、なぜその形でその意味になるのか (由来・綴りが変わるわけ・情景のイメージ) まで開きます。学習モード「語源で学ぶ」では、部品から意味を組み立てて覚えられます。語源は辞書と照らして 1 語ずつ確かめたものだけを載せています。"
+        image="/screenshots/23_etymology_why.jpg"
+        alt="フラッシュカードの語源と部品の説明"
+        motion="float"
+      />
+
+      <FeatureSection
+        eyebrow="NEW ゲームで覚える"
+        title="マッチングとタイムアタックで、テンポよく"
+        description="英単語と意味のペアを消していく「マッチング」と、60 秒で何問わかるかを競う「タイムアタック」。ホームからタップひとつで始められ、自己ベストは単語帳ごとに残ります。答えた数は今日の学習数と連続学習日に入り、復習の予定は崩しません。"
+        image="/screenshots/24_match.jpg"
+        alt="マッチングの画面"
+        reverse
+        motion="float"
+      />
+
+      <FeatureSection
+        eyebrow="NEW 試験日までのカウントダウン"
+        title="試験まであと何日、1 日何語？"
+        description="単語帳ごとに試験日を決めると、「あと何日」と、まだ覚えていない語を試験の前日までに一通り進める「1 日何語のペース」が出ます。英検の一次・二次のように、いくつでも決められます。ロック画面のウィジェットにも置けます。"
+        image="/screenshots/25_exam_home.jpg"
+        alt="ホームの試験までの表示"
+        motion="float"
+      />
+
+      <FeatureSection
+        eyebrow="赤シート・聞き流し"
+        title="紙の単語帳の感覚と、耳からの復習"
+        description="答えを赤シートで隠して 1 行ずつめくり、○× で仕分けた結果はそのまま復習の予定に反映。聞き流しでは単語・意味・例文を自動で読み上げるので、通勤・通学中にも続けられます。"
+        imageBefore="/screenshots/27_red_sheet.jpg"
+        altBefore="赤シートの画面"
+        image="/screenshots/28_listen.jpg"
+        alt="聞き流しの画面"
+        reverse
+        motion="float"
+      />
+
+      <FeatureSection
         eyebrow="学習ロードマップ"
         title="目的別に、どこまで進めばいいかが分かる"
         description="TOEIC・大学受験・英検など、目的別のロードマップを用意。今どの段階にいて、次に何をすれば良いかがひと目で分かります。"
-        imageBefore="/screenshots/01_home.webp"
+        imageBefore="/screenshots/26_home_v15.jpg"
         altBefore="ホーム画面"
         image="/screenshots/06_roadmap.webp"
         alt="学習ロードマップ画面"
@@ -66,10 +106,10 @@ const softwareJsonLd = {
       />
 
       <FeatureSection
-        eyebrow="6 つの学習モード"
-        title="フラッシュ・四択・タイピング・穴埋め・AI クイズ・発音"
+        eyebrow="9 つの学習モード"
+        title="フラッシュ・赤シート・四択・タイピング・穴埋め・聞き流し・語源・AI クイズ・発音"
         description="科学的な間隔反復 (SRS) で復習タイミングを最適化。①フラッシュで知らない単語を仕分け、②間違えた単語を自分に合うモード (四択 / タイピング / 穴埋め) で定着、③ AI クイズや発音でさらに深く ── 同じ単語を多角的に学べます。"
-        imageBefore="/screenshots/01_home.webp"
+        imageBefore="/screenshots/26_home_v15.jpg"
         altBefore="ホーム画面"
         image="/screenshots/22_study_select_new_layout.webp"
         alt="学習モード選択画面"
@@ -80,7 +120,7 @@ const softwareJsonLd = {
       />
 
       <FeatureSection
-        eyebrow="覚え方ヒント (1,591 語に内蔵)"
+        eyebrow="覚え方ヒント"
         title="間違えた瞬間に「あ、そう覚えるのか!」"
         description="不正解になった単語に、語源や既知単語との関連で「覚え方」がぱっと出てきます。「arrive は river と同じ家族で『川岸にたどり着く』」「supervisor は super-(上から)+vise(見る)」のように、見た瞬間に納得できる解説で記憶を強化。全モードで動作し、ネット接続不要です。"
         image="/screenshots/18_flashcard_with_hint.webp"
@@ -158,7 +198,7 @@ const softwareJsonLd = {
         eyebrow="コレクション要素"
         title="図鑑を埋める感覚で、語彙を広げる"
         description="覚えた単語は「未収録 → 銅 → 銀 → 金」と 4 段階にランクアップ。プリセット全単語の達成率が見えて、毎日の学習に目標が生まれます。学習中にランクが上がるとその場でお知らせ。"
-        imageBefore="/screenshots/01_home.webp"
+        imageBefore="/screenshots/26_home_v15.jpg"
         altBefore="ホーム画面（図鑑カード）"
         image="/screenshots/09_dex.webp"
         alt="単語図鑑画面"
@@ -170,7 +210,7 @@ const softwareJsonLd = {
         eyebrow="進捗を見える化"
         title="続けたくなるダッシュボード"
         description="学習ストリーク、ヒートマップ、デッキ別の習得率。数字と色で学習が可視化され、毎日続ける後押しになります。1 日休んでもストリークを守る「フリーズチケット」も。"
-        imageBefore="/screenshots/01_home.webp"
+        imageBefore="/screenshots/26_home_v15.jpg"
         altBefore="ホーム画面"
         image="/screenshots/05_stats.webp"
         alt="統計画面"
@@ -192,7 +232,7 @@ const softwareJsonLd = {
         eyebrow="iCloud 同期"
         title="iPhone と iPad、同じ続きから"
         description="iCloud にサインインしているだけで、デッキ・単語・学習履歴・実績まで自動で複数端末に同期。新しい端末にインストールしても、サインインするだけでこれまでの学習データがそのまま使えます。アカウント登録は不要です。"
-        image="/screenshots/01_home.webp"
+        image="/screenshots/26_home_v15.jpg"
         alt="ホーム画面"
         reverse
         motion="float"

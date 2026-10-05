@@ -3,7 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 
-const updated = '2026-04-24';
+const updated = '2026-10-05';
 ---
 
 <BaseLayout title="プライバシーポリシー | PeraTango">
@@ -31,6 +31,9 @@ const updated = '2026-04-24';
           </li>
           <li>
             <strong>ユーザーが登録した学習コンテンツ</strong>: アプリ改善および学習傾向分析のため、手動入力・OCR・貼り付け・CSV インポートで追加された単語の <code>front</code> / <code>back</code> (各 100 文字まで) と、作成したデッキ名を Firebase Analytics に送信します。
+          </li>
+          <li>
+            <strong>語源の誤りの報告</strong>: 図鑑の語源の画面で「語源の誤りを報告」を押したときだけ、報告した単語・選んだ理由・語根・そのとき表示されていた語源・アプリのバージョンを、開発者が管理する Google フォーム (Google LLC) に送信します。氏名・メールアドレス・端末の識別子は含みません。送信できなかった報告は端末に残し、次にアプリを開いたときに送り直します (30 日を過ぎたものは送らずに削除します)。この報告は、ご自身で報告を押したときにのみ送られるため、「利用状況の送信」の設定に関わらず送信されます。
           </li>
           <li>
             <strong>App Store Connect の分析情報</strong>: Apple が提供する集計済みの利用状況データ (インストール数・クラッシュ数・端末種別など)。
@@ -108,6 +111,12 @@ const updated = '2026-04-24';
               href="https://firebase.google.com/support/privacy"
               target="_blank"
               rel="noopener noreferrer">Firebase のプライバシー情報</a>
+          </li>
+          <li>
+            Google LLC (Google フォーム: 語源の誤りの報告) — <a
+              href="https://policies.google.com/privacy"
+              target="_blank"
+              rel="noopener noreferrer">Google のプライバシー ポリシー</a>
           </li>
           <li>
             Apple Inc. (App Store Connect 分析) — Apple のプライバシーポリシーに準拠
